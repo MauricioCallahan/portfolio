@@ -22,4 +22,4 @@ npm start
 The home page is `src/app/page.tsx`. Shared styles live in `src/app/globals.css`,
 and design tokens live in `src/styles/tokens.css`, based on `references/DESIGN.md`.
 The components in `src/components` provide the requested UI, layout, and section
-structure; the home page currently uses only Container and Hero for the centered box.
+structure; the home page uses a floating Navbar and a rounded introduction Hero.

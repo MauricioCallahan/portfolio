@@ -8,9 +8,7 @@ export default function Home() {
       <Navbar />
       <main className="page">
         <Container>
-          <div className="portfolio-card">
-            <Hero />
-          </div>
+          <Hero />
         </Container>
       </main>
     </>

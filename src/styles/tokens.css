@@ -1,20 +1,22 @@
 :root {
   color-scheme: light;
-  --color-ink-black: #141414;
-  --color-paper-white: #ffffff;
-  --color-cream-surface: #f6f6f6;
-  --color-lilac-wash: #f7f1ff;
-  --color-charcoal-surface: #292929;
-  --color-graphite-border: #38383a;
-  --color-slate-text: #4f4f52;
-  --color-fog-text: #6d6d70;
-  --color-mist-divider: #e5e5e5;
-  --font-switzer: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --color-vast-ink: #1a1a1a;
+  --color-lumen-cream: #ffffeb;
+  --color-lavender-whisper: #f0d7ff;
+  --color-forest-ink: #034f46;
+  --color-ember-glow: #ffa946;
+  --color-lumen-stone: #e4e4d0;
+  --color-fog: #8a8a80;
+  --color-charcoal: #222222;
+  --color-pure-white: #ffffff;
+  --font-eb-garamond: "EB Garamond", Georgia, serif;
+  --font-figtree: "Figtree", ui-sans-serif, system-ui, sans-serif;
   --page-max-width: 1200px;
-  --section-gap: 64px;
-  --card-padding: 24px;
-  --element-gap: 12px;
-  --radius-tags: 4px;
-  --radius-buttons: 8px;
-  --radius-cards: 12px;
+  --section-gap: 80px;
+  --card-padding: 32px;
+  --element-gap: 16px;
+  --radius-tags: 9999px;
+  --radius-buttons: 12px;
+  --radius-cards: 32px;
+  --radius-sections: clamp(40px, 6vw, 80px);
 }

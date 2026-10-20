@@ -1,8 +1,11 @@
 export default function Hero() {
   return (
-    <header>
-      <h1>Portfolio</h1>
-      <p>Projects, experience, skills, and professional development.</p>
+    <header className="hero">
+      <h1><span>Welcome to</span><br />my <em>portfolio.</em></h1>
+      <p>
+        Get to know me through my projects, experience, and skills. This is where
+        I share my work and professional journey.
+      </p>
     </header>
   );
 }

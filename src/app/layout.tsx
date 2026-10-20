@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <link
           rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&family=Figtree:wght@400;500;600;700&display=swap"
         />
       </head>
       <body>{children}</body>
