@@ -7,11 +7,20 @@ export default function Page() {
   return (
     <section className="page-intro about-layout">
       <h1 className="about-title">About Me</h1>
+      <p className="about-intro">
+        Hello! I’m Mauricio Callahan, a Computer Science major with a minor in
+        Finance at Miami University, expecting to graduate in May 2027.
+      </p>
+      <div className="about-photo">
+        <Image
+          src="/Headshot-extended.png"
+          alt="Mauricio Callahan"
+          width={1122}
+          height={1402}
+          sizes="(max-width: 767px) 100vw, (max-width: 1248px) 40vw, 461px"
+        />
+      </div>
       <div className="about-body">
-        <p>
-          Hello! I’m Mauricio Callahan, a Computer Science major with a minor in
-          Finance at Miami University, expecting to graduate in May 2027.
-        </p>
         <p>
           My passion and experience lie within software, specifically backend
           systems and financial technologies. This past summer, I interned at
@@ -30,17 +39,6 @@ export default function Page() {
           positions in the Society of Hispanic Professional Engineers (SHPE) and
           Theta Tau Professional Engineer Fraternity.
         </p>
-      </div>
-      <div className="about-photo">
-        <div className="about-headshot">
-          <Image
-            src="/Headshot.png"
-            alt="Mauricio Callahan"
-            width={288}
-            height={288}
-            sizes="(max-width: 767px) 180px, (max-width: 1248px) 24vw, 288px"
-          />
-        </div>
       </div>
     </section>
   );

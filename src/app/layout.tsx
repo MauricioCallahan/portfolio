@@ -25,7 +25,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Container>{children}</Container>
         </main>
         <Footer>
-          <Container><p>Projects, experience, and professional development.</p></Container>
+          <Container>
+            <p>
+              © 2026 Mauricio Callahan. Code licensed under{" "}
+              <a href="https://github.com/MauricioCallahan/portfolio/blob/main/LICENSE">
+                MIT
+              </a>
+              .
+            </p>
+          </Container>
         </Footer>
       </body>
     </html>
