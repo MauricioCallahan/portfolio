@@ -343,6 +343,8 @@ p {
 }
 
 .resume-overview {
+  --resume-overview-transform: none;
+  transform: var(--resume-overview-transform);
   width: 100%;
   max-width: 584px;
   margin-inline: auto;
@@ -517,7 +519,115 @@ p {
   margin-top: 24px;
 }
 
+.resume-detail[data-project-source] {
+  visibility: hidden;
+}
+
+body:has(.project-focus) .resume-stage .resume-overview {
+  transition: none;
+}
+
+body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-project-source] {
+  visibility: visible;
+}
+
+.project-focus[data-phase="restoring-resume"] .project-focus-anchor {
+  visibility: hidden;
+}
+
+.project-focus-blur {
+  position: fixed;
+  z-index: 19;
+  inset: 0;
+  pointer-events: none;
+  backdrop-filter: blur(5px);
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+}
+
+.project-focus {
+  position: absolute;
+  z-index: 20;
+  inset-inline: 0;
+  width: calc(100% - 48px);
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+  color: var(--color-vast-ink);
+}
+
+.project-focus-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: var(--radius-cards);
+}
+
+.project-focus-controls .text-link {
+  margin: 0;
+}
+
+.project-focus-status {
+  font-size: 14px;
+}
+
+.project-focus-grid {
+  display: grid;
+  align-items: start;
+  gap: 32px;
+}
+
+.project-focus-anchor,
+.project-focus-details {
+  min-width: 0;
+}
+
+.project-focus-details {
+  padding: var(--card-padding);
+  border: 2px solid var(--color-vast-ink);
+  border-radius: var(--radius-cards);
+  background: var(--color-lumen-cream);
+  clip-path: inset(0 0 100% 0);
+}
+
+.project-narrative {
+  display: grid;
+  gap: 48px;
+  max-width: 65ch;
+  margin-top: 32px;
+  overflow-wrap: anywhere;
+}
+
+.project-narrative h2 {
+  font-size: clamp(32px, 3vw, 40px);
+  line-height: 1.05;
+}
+
+.project-narrative p {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.project-narrative p + p {
+  margin-top: 16px;
+}
+
+.project-focus-details .project-narrative {
+  margin: 0;
+}
+
 @media (min-width: 1024px) {
+  .project-focus-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .project-focus-anchor[data-sticky] {
+    position: sticky;
+    top: 24px;
+  }
+
   /* Keep the measured width stable when sticky enhancement turns on or off. */
   .resume-overview {
     width: calc((100% - 32px) / 2);
@@ -534,11 +644,11 @@ p {
     position: sticky;
     top: 24px;
     width: 100%;
-    transform: translateX(calc(50% + 16px));
+    --resume-overview-transform: translateX(calc(50% + 16px));
   }
 
   .is-enhanced.is-exploring .resume-overview {
-    transform: translateX(0);
+    --resume-overview-transform: translateX(0);
   }
 
   .is-enhanced .resume-details {
@@ -552,7 +662,7 @@ p {
   }
 
   .is-enhanced .resume-overview {
-    transition: transform 400ms ease;
+    transition: transform 400ms ease, opacity 400ms ease;
   }
 }
 

@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import Badge from "@/components/ui/Badge";
-import { resumeProfile, resumeSections } from "@/data/resume";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { resumeProfile, resumeSections, type ResumeEntry } from "@/data/resume";
+import { projects } from "@/data/projects";
 import { getActiveResumeEntry } from "@/lib/resume";
+import ResumeEntryCard from "./ResumeEntryCard";
+import ProjectFocus, { type ProjectSelection } from "./ProjectFocus";
 
 export default function InteractiveResume() {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -13,6 +14,17 @@ export default function InteractiveResume() {
   const [enhanced, setEnhanced] = useState<boolean | null>(null);
   const [exploring, setExploring] = useState(false);
   const [activeId, setActiveId] = useState<string | undefined>();
+  const [selection, setSelection] = useState<ProjectSelection | null>(null);
+  const closeProject = useCallback(() => setSelection(null), []);
+  const exploreProject = (entry: ResumeEntry, trigger: HTMLAnchorElement) => {
+    const project = projects.find(project => project.resumeEntryId === entry.id);
+    const card = trigger.closest("article");
+    if (!project || !card) {
+      window.location.assign(trigger.href);
+      return;
+    }
+    setSelection({ entry, project, trigger, source: card.getBoundingClientRect(), scrollX: window.scrollX, scrollY: window.scrollY });
+  };
 
   useEffect(() => {
     const overview = overviewRef.current;
@@ -35,7 +47,7 @@ export default function InteractiveResume() {
 
   useEffect(() => {
     const stage = stageRef.current;
-    if (!stage || enhanced === null) return;
+    if (!stage || enhanced === null || selection) return;
     const details = Array.from(stage.querySelectorAll<HTMLElement>("[data-resume-entry]"));
     if (!initialHashAligned.current) {
       details.find(detail => detail.id === window.location.hash.slice(1))?.scrollIntoView({ behavior: "instant" });
@@ -65,7 +77,7 @@ export default function InteractiveResume() {
       window.removeEventListener("resize", schedule);
       window.removeEventListener("hashchange", schedule);
     };
-  }, [enhanced]);
+  }, [enhanced, selection]);
 
   return (
     <section className="resume-page">
@@ -104,16 +116,7 @@ export default function InteractiveResume() {
             <section className="resume-detail-section" key={section.id} aria-labelledby={`section-${section.id}`}>
               <h2 id={`section-${section.id}`}>{section.title}</h2>
               {section.entries.map(entry => (
-                <article className="resume-detail" id={entry.id} data-resume-entry key={entry.id} tabIndex={-1} aria-labelledby={`heading-${entry.id}`}>
-                  {entry.dates && <p className="resume-dates">{entry.dates}</p>}
-                  <h3 id={`heading-${entry.id}`}>{entry.title}</h3>
-                  {entry.organization && <p className="resume-organization">{entry.organization}</p>}
-                  {entry.location && <p className="resume-location">{entry.location}</p>}
-                  <ul>{entry.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul>
-                  {entry.context && <p className="resume-context">{entry.context}</p>}
-                  {entry.technologies && <ul className="resume-technologies" aria-label="Technologies">{entry.technologies.map(technology => <li key={technology}><Badge>{technology}</Badge></li>)}</ul>}
-                  {entry.projectHref && <Link className="text-link" href={entry.projectHref}>Explore project <span aria-hidden="true">↗</span></Link>}
-                </article>
+                <ResumeEntryCard key={entry.id} entry={entry} selected={selection?.entry.id === entry.id} onExplore={exploreProject} />
               ))}
             </section>
           ))}
@@ -126,6 +129,7 @@ export default function InteractiveResume() {
         <p>Keep a copy of my resume.</p>
         <a className="button" href={resumeProfile.pdfHref} download>Download PDF <span aria-hidden="true">↓</span></a>
       </footer>
+      {selection && <ProjectFocus selection={selection} onClose={closeProject} />}
     </section>
   );
 }
