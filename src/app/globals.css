@@ -182,6 +182,52 @@ p {
   color: inherit;
 }
 
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer-contact {
+  display: grid;
+  grid-template-columns: min-content;
+  margin-left: auto;
+  text-align: right;
+}
+
+.footer-contact h2 {
+  margin-bottom: 16px;
+  font-size: 32px;
+  white-space: nowrap;
+}
+
+.footer-socials {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.footer-socials a {
+  display: grid;
+  place-items: center;
+  height: 40px;
+  border: 2px solid currentColor;
+  border-radius: var(--radius-buttons);
+}
+
+.footer-socials svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-socials a:hover {
+  color: var(--color-vast-ink);
+  border-color: var(--color-lavender-whisper);
+  background: var(--color-lavender-whisper);
+}
+
 .section {
   padding-block: var(--section-gap);
 }

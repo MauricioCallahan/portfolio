@@ -8,8 +8,8 @@ import Container from "./Container";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Me" },
-  { href: "/projects", label: "Projects" },
   { href: "/experience", label: "Experience" },
+  { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ];
 
