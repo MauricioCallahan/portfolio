@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
+import InteractiveResume from "@/components/experience/InteractiveResume";
 
-export const metadata: Metadata = { title: "Experiences | Portfolio" };
+export const metadata: Metadata = { title: "Experience | Portfolio" };
 
 export default function Page() {
-  return (
-    <section className="page-intro">
-      <h1>Experiences</h1>
-      <p>Professional experience, responsibilities, and milestones will be shared here.</p>
-    </section>
-  );
+  return <InteractiveResume />;
 }
