@@ -178,6 +178,7 @@ export default function ProjectFocus({ selection, onClose }: { selection: Projec
           </div>
           <div ref={detailsRef} className="project-focus-details" inert={phase !== "open"} aria-hidden={phase !== "open"}>
             <ProjectDetails project={selection.project} />
+            <Link className="text-link" href={`/projects/${selection.project.slug}`}>Even deeper dive??</Link>
           </div>
         </div>
       </div>
