@@ -4,6 +4,7 @@ export type ResumeEntry = {
   organization?: string;
   location?: string;
   dates?: string;
+  duration?: string;
   summary: string;
   bullets: string[];
   context?: string;
@@ -45,7 +46,7 @@ export const resumeSections: { id: string; title: string; entries: ResumeEntry[]
           "Created an AI agent that translates plain English into Splunk queries through JPMC’s internal MCP server",
         ],
         context: "My focus was backend systems supporting ACH transactions: API functionality for cancellations, efficient database operations, and correct transaction handling.",
-        technologies: ["Java", "Spring Boot", "SQL", "Postgres", "Docker", "Jenkins", "GitHub Copilot"],
+        technologies: ["Java", "Spring Boot", "SQL", "Postgres", "Jenkins", "GitHub Copilot"],
       },
       {
         id: "peer-career-coach", title: "Peer Career Coach",
@@ -64,7 +65,7 @@ export const resumeSections: { id: string; title: string; entries: ResumeEntry[]
     id: "projects", title: "Projects",
     entries: [
       {
-        id: "fire", title: "FIRE! Budgeting App", dates: "In Progress", summary: "Concurrent ledgers & secure APIs",
+        id: "fire", title: "FIRE! Budgeting App", dates: "In progress", duration: "Launch project", summary: "Concurrent ledgers & secure APIs",
         technologies: ["Next.js", "TypeScript", "Java", "Spring Boot", "Supabase", "PostgreSQL"], projectHref: "/projects/fire",
         bullets: [
           "Designed a PostgreSQL ledger with triggers and ordered row locks that keep totals accurate under concurrency",
@@ -73,7 +74,7 @@ export const resumeSections: { id: string; title: string; entries: ResumeEntry[]
         ],
       },
       {
-        id: "riven-market", title: "Riven Market Pricing Tool", dates: "March 2026", summary: "Live auction price estimation",
+        id: "riven-market", title: "Riven Market Pricing Tool", dates: "March 2026", duration: "About 3–4 months", summary: "Live auction price estimation",
         technologies: ["Python", "Flask", "React", "TypeScript"], projectHref: "/projects/riven-market",
         bullets: [
           "Built a Flask backend estimating prices for player traded digital items from live auction data",
@@ -82,7 +83,7 @@ export const resumeSections: { id: string; title: string; entries: ResumeEntry[]
         ],
       },
       {
-        id: "pose-detection", title: "Pose Detection", dates: "May 2026", summary: "Predicting body joints from radar",
+        id: "pose-detection", title: "Pose Detection", dates: "May 2026", duration: "About 2 months", summary: "Predicting body joints from radar",
         technologies: ["Python", "PyTorch", "NumPy"], projectHref: "/projects/radar-pose",
         bullets: [
           "Trained a custom CNN and modified ResNet18 with a 4 person team to predict 17 body joints from radar data",

@@ -101,7 +101,7 @@ export default function InteractiveResume() {
                     <li key={entry.id}>
                       <a href={`#${entry.id}`} aria-current={activeId === entry.id ? "location" : undefined}>
                         <span className="resume-entry-title">{entry.title}</span>
-                        <span className="resume-entry-summary">{entry.summary}{entry.dates && <> · {entry.dates}</>}</span>
+                        <span className="resume-entry-summary">{entry.summary}{entry.dates && <> · {entry.dates}</>}{entry.duration && <> · {entry.duration}</>}</span>
                       </a>
                     </li>
                   ))}
