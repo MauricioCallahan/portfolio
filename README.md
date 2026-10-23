@@ -46,3 +46,7 @@ Asset directories are prepared
 under `public/images`; unused diagrams and empty data modules are deferred until needed.
 
 The navigation and resume tests use Node.js 22.18+ (native TypeScript stripping).
+For optional browser checks, make Playwright available to Node (installed locally
+or via `NODE_PATH`) and have Microsoft Edge installed. Start the app on
+`127.0.0.1:3000`, then run `node tests/navigation.browser.mjs` to check the sliding
+navbar on desktop, wrapped mobile layouts, and with reduced motion.
