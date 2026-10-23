@@ -3,7 +3,12 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 
 const { chromium } = createRequire(import.meta.url)("playwright");
-const browser = await chromium.launch({ channel: "msedge", headless: true });
+const browser = await chromium.launch({
+  channel: "msedge",
+  headless: true,
+  // Headless mode hides the scrollbar by default, masking layout shifts.
+  ignoreDefaultArgs: ["--hide-scrollbars"],
+});
 
 try {
   const page = await browser.newPage();
@@ -22,10 +27,18 @@ try {
       Math.abs(parseFloat(highlight.height) - active.offsetHeight) < 1;
   });
 
-  for (const width of [1280, 390, 320]) {
+  const navBounds = () => page.evaluate(() =>
+    [...document.querySelectorAll(".navbar, .navbar-links a")].map((element) => {
+      const { x, width, height } = element.getBoundingClientRect();
+      return { x, width, height };
+    }));
+
+  for (const width of [1280, 1100, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("http://127.0.0.1:3000");
+    await page.evaluate(() => document.fonts.ready);
     await aligned();
+    const initialBounds = await navBounds();
     await page.evaluate(() => {
       window.navDocument = document;
       window.navElement = document.querySelector("body > nav");
@@ -45,6 +58,8 @@ try {
       await page.waitForFunction((text) =>
         document.querySelector('.navbar-links a[aria-current="page"]')?.textContent === text, label);
       await aligned();
+      assert.deepEqual(await navBounds(), initialBounds,
+        "navbar and all five links should keep their position and size on long and short pages");
       assert.equal(await page.evaluate(() => window.navDocument === document), true,
         "navigation should preserve the shared highlight across pages");
       assert.equal(await page.evaluate(() =>
