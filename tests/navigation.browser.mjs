@@ -28,7 +28,13 @@ try {
     await aligned();
     await page.evaluate(() => {
       window.navDocument = document;
+      window.navElement = document.querySelector("body > nav");
+      window.footerElement = document.querySelector("body > footer");
       window.navTransitions = [];
+      window.pageArrivals = 0;
+      document.addEventListener("animationstart", (event) => {
+        if (event.animationName === "page-arrive") window.pageArrivals++;
+      });
       document.querySelector(".navbar-links").addEventListener("transitionrun", (event) => {
         window.navTransitions.push(event.propertyName);
       });
@@ -41,8 +47,18 @@ try {
       await aligned();
       assert.equal(await page.evaluate(() => window.navDocument === document), true,
         "navigation should preserve the shared highlight across pages");
+      assert.equal(await page.evaluate(() =>
+        window.navElement === document.querySelector("body > nav") &&
+        window.footerElement === document.querySelector("body > footer")), true,
+      "the navbar and footer should persist outside the page fade");
     }
+    assert.ok(await page.evaluate(() => window.pageArrivals >= 5),
+      "new page content should fade in on each navigation");
     await page.goBack();
+    await page.waitForURL("**/contact");
+    await aligned();
+    await page.goForward();
+    await page.waitForURL("http://127.0.0.1:3000/");
     await aligned();
     assert.ok(await page.evaluate(() => window.navTransitions.includes("transform")),
       "the highlight should slide between navigation items");
@@ -54,17 +70,30 @@ try {
   await page.setViewportSize({ width: 1280, height: 900 });
   await aligned();
 
+  await page.evaluate(() => {
+    document.querySelector('.navbar-links a[href="/contact"]').click();
+    requestAnimationFrame(() => document.querySelector('.navbar-links a[href="/about"]').click());
+  });
+  await page.waitForURL("**/about");
+  await aligned();
+  await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Home", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  await page.waitForURL("http://127.0.0.1:3000/");
+  await aligned();
+
   await page.emulateMedia({ reducedMotion: "reduce" });
   assert.equal(await page.locator(".navbar-links").evaluate((list) =>
     getComputedStyle(list, "::before").transitionDuration), "0s");
   await page.getByRole("navigation").getByRole("link", { name: "About Me" }).click();
   await page.waitForURL("**/about");
   await aligned();
+  assert.equal(await page.locator(".page-transition").evaluate((content) =>
+    getComputedStyle(content).animationName), "none");
 
   await page.goto("http://127.0.0.1:3000/missing");
   await page.waitForFunction(() => !document.querySelector(".navbar-links").hasAttribute("data-highlight"));
   assert.deepEqual(errors, []);
-  console.log("Navbar checks passed: desktop, wrapped mobile, history, nested routes, resize, reduced motion, and unmatched routes.");
+  console.log("Transition checks passed: desktop, wrapped mobile, history, nested routes, resize, rapid navigation, keyboard, page fades, reduced motion, and unmatched routes.");
 } finally {
   await browser.close();
 }

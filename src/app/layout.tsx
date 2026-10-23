@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Container from "@/components/layout/Container";
 import Navbar from "@/components/layout/Navbar";
+import PageTransition from "@/components/layout/PageTransition";
 import Footer from "@/components/layout/Footer";
 import { resumeProfile } from "@/data/resume";
 import "./globals.css";
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <Navbar />
         <main id="main-content" className="page">
-          <Container>{children}</Container>
+          <Container><PageTransition>{children}</PageTransition></Container>
         </main>
         <Footer>
           <Container className="footer-content">
