@@ -75,11 +75,11 @@ export const resumeSections: { id: string; title: string; entries: ResumeEntry[]
       },
       {
         id: "riven-market", title: "Riven Market Pricing Tool", dates: "March 2026", duration: "About 3–4 months", summary: "Live auction price estimation",
-        technologies: ["Python", "Flask", "React", "TypeScript"], projectHref: "/projects/riven-market",
+        technologies: ["React", "TypeScript", "TanStack Query", "Python", "Flask"], projectHref: "/projects/riven-market",
         bullets: [
-          "Built a Flask backend estimating prices for player traded digital items from live auction data",
-          "Developed a similarity based price estimator with outlier removal, age decay, and market derived stat weights",
-          "Implemented rate limiting, 24-hour caching with fallback, validated with unit tests",
+          "A full-stack pricing tool for Warframe’s player-driven Riven market, leveraging the Warframe.market website as its data source.",
+          "Its custom estimator compares similar listings and validates auction bids to produce a price range with a confidence rating.",
+          "Rate limiting, caching, and fallback data keep searches resilient.",
         ],
       },
       {

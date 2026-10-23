@@ -82,7 +82,6 @@ export default function InteractiveResume() {
   return (
     <section className="resume-page">
       <header className="resume-header page-intro">
-        <p className="resume-eyebrow">Experience</p>
         <h1>The work,<br /><em>and the story behind it.</em></h1>
         <p>Explore my education, experience, and projects. Follow the details as you scroll, or choose an entry to jump in.</p>
         <a className="button resume-open" href={resumeProfile.pdfHref} target="_blank" rel="noopener noreferrer">Open PDF <span aria-hidden="true">↗</span></a>

@@ -31,7 +31,7 @@ export default function Hero() {
             <p>A pricing tool for player-traded digital items, using live auction data to estimate what a comparable item might cost.</p>
             <div className="home-contribution">
               <h3>What I built</h3>
-              <p>A full-stack pricing tool for Warframe’s player-run Riven market; warframe.market. Its custom estimator compares similar listings and validates auction bids to produce a price range with a confidence rating. Rate limiting, caching, and fallback data keep searches resilient.</p>
+              <p>A full-stack pricing tool for Warframe’s player-driven Riven market, leveraging the Warframe.market website as its data source. Its custom estimator compares similar listings and validates auction bids to produce a price range with a confidence rating. Rate limiting, caching, and fallback data keep searches resilient.</p>
             </div>
             <ul className="home-technologies" aria-label="Project technologies">
               {["React", "TypeScript", "TanStack Query", "Python", "Flask"].map(name => <li key={name}><Badge>{name}</Badge></li>)}

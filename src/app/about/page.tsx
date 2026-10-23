@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "About Me | Portfolio" };
 export default function Page() {
   return (
     <section className="page-intro about-layout">
-      <h1 className="about-title">About Me</h1>
+      <h1 className="about-title">About <em>me</em></h1>
       <p className="about-intro">
         Hello! I’m Mauricio Callahan, a Computer Science major with a minor in
         Finance at Miami University, expecting to graduate in May 2027.

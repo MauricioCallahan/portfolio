@@ -10,9 +10,9 @@ export const projects = [
   {
     slug: "riven-market", title: "Riven Market", resumeEntryId: "riven-market",
     sections: [
-      { title: "The project", paragraphs: ["Riven Market is a pricing tool for player traded digital items. Its Flask backend estimates prices using live auction data."] },
-      { title: "Estimating a price", paragraphs: ["The estimator compares similar items, removes outliers, and applies age decay and market derived stat weights."] },
-      { title: "Handling live data", paragraphs: ["Rate limiting and a 24-hour cache with fallback support the auction data workflow. Unit tests validate that behavior."] },
+      { title: "What I built", paragraphs: ["A full-stack pricing tool for Warframe’s player-driven Riven market, leveraging the Warframe.market website as its data source.", "Its custom estimator compares similar listings and validates auction bids to produce a price range with a confidence rating."] },
+      { title: "How an estimate takes shape", paragraphs: ["Fetch live auctions for the selected weapon.", "Compare stat rolls and builds, accounting for rerolls and listing age.", "Use validated bids or outlier filtered listing prices to estimate value and confidence."] },
+      { title: "Handling live data", paragraphs: ["Rate limiting, caching, and fallback data keep searches resilient."] },
     ],
   },
   {
