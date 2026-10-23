@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
+import jpmorganPhoto from "../../../public/images/experiences/JPMC/JPMC_Photo_3.jpeg";
+import jpmorganEvent from "../../../public/images/experiences/JPMC/JPMC_event.jpeg";
 import Badge from "@/components/ui/Badge";
 import ShowcaseSection from "@/components/sections/ShowcaseSection";
 import WelcomeFrame from "./WelcomeFrame";
@@ -28,10 +31,10 @@ export default function Hero() {
             <p>A pricing tool for player-traded digital items, using live auction data to estimate what a comparable item might cost.</p>
             <div className="home-contribution">
               <h3>What I built</h3>
-              <p>I built the Flask backend and a similarity-based estimator with outlier removal, age decay, and market-derived stat weights. Rate limiting and a 24-hour cache with fallback support the live-data workflow.</p>
+              <p>A full-stack pricing tool for Warframe’s player-run Riven market; warframe.market. Its custom estimator compares similar listings and validates auction bids to produce a price range with a confidence rating. Rate limiting, caching, and fallback data keep searches resilient.</p>
             </div>
             <ul className="home-technologies" aria-label="Project technologies">
-              {["Python", "Flask", "React", "TypeScript"].map(name => <li key={name}><Badge>{name}</Badge></li>)}
+              {["React", "TypeScript", "TanStack Query", "Python", "Flask"].map(name => <li key={name}><Badge>{name}</Badge></li>)}
             </ul>
             <Link className="button home-story-cta" href="/projects/riven-market">Explore Riven Market <span aria-hidden="true">↗</span></Link>
           </div>
@@ -48,9 +51,9 @@ export default function Hero() {
               <h3>How an estimate takes shape</h3>
               <p className="home-process-caption">Process explanation</p>
               <ol>
-                <li><span>01</span> Live auction data</li>
-                <li><span>02</span> Similar-item comparison and filtering</li>
-                <li><span>03</span> Price estimate</li>
+                <li><span>01</span> Fetch live auctions for the selected weapon.</li>
+                <li><span>02</span> Compare stat rolls and builds, accounting for rerolls and listing age.</li>
+                <li><span>03</span> Use validated bids or outlier filtered listing prices to estimate value and confidence.</li>
               </ol>
             </div>
           </div>
@@ -76,12 +79,16 @@ export default function Hero() {
           </div>
           <div className="home-photo-grid">
             <figure className="home-photo-card">
-              <div className="home-photo-placeholder"><span className="home-asset-label">Intern collaboration</span><p>[Intern collaboration photo]</p></div>
-              <figcaption>[Caption: the setting and my involvement]</figcaption>
+              <div className="home-photo-media">
+                <Image src={jpmorganPhoto} alt="Three people standing in front of the JPMorgan Chase & Co. reception wall" sizes="(min-width: 1248px) 480px, (min-width: 1024px) 40vw, 85vw" />
+                <span className="home-asset-label">Intern collaboration</span>
+              </div>
             </figure>
             <figure className="home-photo-card">
-              <div className="home-photo-placeholder"><span className="home-asset-label">Beyond the work</span><p>[Intern event photo]</p></div>
-              <figcaption>[Caption: the event and my involvement]</figcaption>
+              <div className="home-photo-media">
+                <Image src={jpmorganEvent} alt="A group posing together beneath an Activate sign at an intern event" sizes="(min-width: 1248px) 480px, (min-width: 1024px) 40vw, 85vw" />
+                <span className="home-asset-label">Beyond the work</span>
+              </div>
             </figure>
           </div>
         </div>

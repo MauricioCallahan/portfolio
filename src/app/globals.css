@@ -938,26 +938,25 @@ body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-proj
   background: var(--color-vast-ink);
 }
 
-.home-photo-placeholder {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  min-height: 200px;
-  padding: 32px;
-}
-
-.home-photo-placeholder > p {
-  font-family: var(--font-eb-garamond);
-  font-size: 32px;
-}
-
-.home-photo-card figcaption {
+.home-photo-media {
   position: relative;
-  padding: 24px 32px;
+  overflow: hidden;
+}
+
+.home-photo-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-photo-media .home-asset-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  width: fit-content;
+  padding: 8px 16px;
   background: var(--color-vast-ink);
-  font-size: 14px;
-  line-height: 1.5;
 }
 
 @media (min-width: 1024px) {
@@ -981,8 +980,7 @@ body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-proj
   }
 
   .home-product-placeholder,
-  .home-process,
-  .home-photo-placeholder {
+  .home-process {
     padding: 24px;
   }
 
