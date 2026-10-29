@@ -13,7 +13,7 @@ export default function Page() {
       </p>
       <div className="about-photo">
         <Image
-          src="/Headshot-extended.png"
+          src="/images/profile/Headshot-extended.png"
           alt="Mauricio Callahan"
           width={1122}
           height={1402}

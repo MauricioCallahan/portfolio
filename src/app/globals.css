@@ -948,90 +948,85 @@ body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-proj
   line-height: 1.5;
 }
 
-.home-story-visual {
+.riven-process {
+  align-self: stretch;
   display: grid;
+  align-content: center;
   gap: 32px;
   min-width: 0;
 }
 
-.home-product-figure,
-.home-photo-card {
-  margin: 0;
-}
-
-.home-product-placeholder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  gap: 24px;
-  min-height: 320px;
-  padding: 32px;
-  border: 2px solid var(--color-lumen-stone);
-  border-radius: var(--radius-cards);
-  color: var(--color-vast-ink);
-  background: var(--color-lumen-cream);
-}
-
-.home-asset-label {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.home-product-placeholder > p:first-of-type {
-  font-size: 24px;
-}
-
-.home-placeholder-note,
-.home-product-figure figcaption,
-.home-process-caption {
-  font-size: 14px;
-}
-
-.home-product-figure figcaption {
-  margin-top: 16px;
-  line-height: 1.5;
-}
-
-.home-process {
-  padding: 32px;
-  border: 2px solid var(--color-forest-ink);
-  border-radius: var(--radius-cards);
-  background: var(--color-forest-ink);
-}
-
-.home-process ol {
+.riven-lines {
   display: grid;
-  gap: 16px;
-  margin: 24px 0 0;
-  padding: 0;
+  gap: 32px;
+  margin: 0;
+  padding: 0 24px 0 64px;
   list-style: none;
 }
 
-.home-process li {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 16px;
-  line-height: 1.5;
+.riven-lines li {
+  position: relative;
+  min-width: 0;
 }
 
-.home-process li span {
-  color: var(--color-lavender-whisper);
+.riven-line-marker {
+  position: absolute;
+  top: 14px;
+  left: -64px;
+  width: 40px;
+  height: 2px;
+  background: var(--color-fog);
+  transform-origin: left center;
 }
 
-.home-missing-copy {
-  padding-left: 16px;
-  border-left: 2px solid var(--color-forest-ink);
+.riven-lines li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 16px);
+  left: -64px;
+  width: 16px;
+  height: 1px;
+  background: var(--color-fog);
 }
 
-.home-photo-grid {
-  display: grid;
-  gap: 32px;
+.riven-line-copy {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  color: var(--color-lumen-cream);
+}
+
+.riven-line-number {
+  flex: 0 0 16px;
+  font-size: 12px;
+  color: var(--color-lumen-stone);
+}
+
+.riven-line-title {
+  font-size: 20px;
+}
+
+.riven-line-description {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .riven-line-copy {
+    color: color-mix(in srgb, var(--color-lavender-whisper) calc(var(--line-proximity, 0) * 100%), var(--color-lumen-cream));
+    transform: translateX(calc(var(--line-proximity, 0) * 16px));
+    transition: transform 160ms ease-out, color 160ms ease-out;
+  }
+
+  .riven-line-marker {
+    background: color-mix(in srgb, var(--color-lavender-whisper) calc(var(--line-proximity, 0) * 100%), var(--color-fog));
+    transform: scaleX(calc(0.7 + var(--line-proximity, 0) * 0.5));
+    transition: transform 160ms ease-out, background-color 160ms ease-out;
+  }
 }
 
 .home-photo-card {
+  margin: 0;
   overflow: hidden;
   border: 2px solid var(--color-vast-ink);
   border-radius: 40px;
@@ -1039,25 +1034,10 @@ body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-proj
   background: var(--color-vast-ink);
 }
 
-.home-photo-media {
-  position: relative;
-  overflow: hidden;
-}
-
-.home-photo-media img {
+.home-photo-card img {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.home-photo-media .home-asset-label {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  width: fit-content;
-  padding: 8px 16px;
-  background: var(--color-vast-ink);
 }
 
 @media (min-width: 1024px) {
@@ -1078,15 +1058,6 @@ body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-proj
   .home-story + .home-story {
     margin-top: 48px;
     margin-bottom: 8px;
-  }
-
-  .home-product-placeholder,
-  .home-process {
-    padding: 24px;
-  }
-
-  .home-product-placeholder {
-    min-height: 280px;
   }
 
   .navbar {
