@@ -1325,3 +1325,78 @@ body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-proj
   font-size: 14px;
   color: var(--color-fog);
 }
+
+.riven-estimate-visual {
+  max-width: 360px;
+  margin: 0;
+  padding: 16px;
+  border-radius: 40px;
+  background: var(--color-vast-ink);
+}
+
+.riven-estimate-shot {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.riven-estimate-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.riven-estimate-marker {
+  position: absolute;
+  left: 93%;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-vast-ink);
+  border-radius: var(--radius-tags);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  color: var(--color-vast-ink);
+  background: var(--color-lavender-whisper);
+  outline: 2px solid var(--color-lavender-whisper);
+  transform: translate(-50%, -50%);
+}
+
+.riven-estimate-keys {
+  display: grid;
+  gap: 20px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: riven-key;
+}
+
+.riven-estimate-keys li {
+  position: relative;
+  padding-left: 46px;
+  font-size: 18px;
+  line-height: 1.5;
+  counter-increment: riven-key;
+}
+
+.riven-estimate-keys li::before {
+  content: counter(riven-key);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--color-vast-ink);
+  border-radius: var(--radius-tags);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: center;
+  background: var(--color-lavender-whisper);
+}
+
+.riven-estimate-keys strong {
+  display: block;
+  font-weight: 600;
+}
