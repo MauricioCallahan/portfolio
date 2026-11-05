@@ -1128,3 +1128,52 @@ body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-proj
     min-height: 480px;
   }
 }
+
+/* FIRE house states: flat illustrations on a cream card, no shadows */
+.fire-visual {
+  margin: 32px 0 0;
+  max-width: 960px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 2px solid var(--color-vast-ink);
+  border-radius: var(--radius-cards);
+}
+
+.fire-visual-states {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fire-visual-states img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fire-visual-name {
+  margin-top: 8px;
+  font-family: var(--font-eb-garamond);
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.fire-visual-note {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--color-fog);
+}
+
+.fire-visual figcaption {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--color-fog);
+}
+
+@media (max-width: 640px) {
+  .fire-visual-states {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
