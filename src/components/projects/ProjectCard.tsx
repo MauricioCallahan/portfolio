@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { ComponentType } from "react";
+import RadarPoseCardArt from "./RadarPoseCardArt";
 import RivenCardArt from "./RivenCardArt";
 
 const cardArt: Record<string, ComponentType> = {
   "riven-market": RivenCardArt,
+  "radar-pose": RadarPoseCardArt,
 };
 
 export default function ProjectCard({ slug, title }: { slug: string; title: string }) {
