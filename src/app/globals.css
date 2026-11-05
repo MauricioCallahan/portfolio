@@ -860,6 +860,22 @@ body:has(.project-focus[data-phase="restoring-resume"]) .resume-detail[data-proj
   height: auto;
 }
 
+.fire-card-art {
+  position: relative;
+  aspect-ratio: 20 / 13;
+  background: var(--color-lumen-stone);
+}
+
+.fire-card-art img {
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  display: block;
+  width: auto;
+  height: 92%;
+  transform: translateX(-50%);
+}
+
 .project-card h2 {
   font-size: 32px;
   line-height: 1.1;

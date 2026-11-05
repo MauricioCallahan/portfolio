@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { ComponentType } from "react";
+import FireCardArt from "./FireCardArt";
 import RivenCardArt from "./RivenCardArt";
 
 const cardArt: Record<string, ComponentType> = {
+  fire: FireCardArt,
   "riven-market": RivenCardArt,
 };
 
