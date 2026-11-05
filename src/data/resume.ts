@@ -48,10 +48,10 @@ export const resumeSections: { id: string; title: string; entries: ResumeEntry[]
       },
       {
         id: "peer-career-coach", title: "Peer Career Coach",
-        organization: "Miami University - Center for Career Exploration and Success", location: "Oxford, OH",
+        organization: "Miami University, Center for Career Exploration and Success", location: "Oxford, OH",
         dates: "August 2025 – Present", summary: "Miami University · CCES",
         bullets: [
-          "Conduct 1:1 resume reviews, mock interviews, and provide career development guidance to students",
+          "Conduct 1:1 resume reviews and mock interviews, and provide career guidance to students",
           "Facilitate workshops and deliver 3+ presentations per semester on professional and career readiness",
           "Collaborate with student workers and career staff to improve coaching strategies and interview preparation resources",
         ],
